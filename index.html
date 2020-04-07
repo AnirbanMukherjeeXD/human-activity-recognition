@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+	
+	<style>
+	canvas{
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	</style>
+<style type="text/css">/* Chart.js */
+@keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style>
+        <title>Plot Sensor Data</title>
+    </head>
+    <body><br><br><br><center><h2 style="font-family:verdana">Accelerometer</h2>
+	<div style="width:75%;">
+		<canvas id="canvas" style="display: block; height: 570px; width: 1140px;" width="1425" height="712" class="chartjs-render-monitor"></canvas>
+	</div>
+	<br>
+	<br>
+	
+	<script>
+	Chart.defaults.global.animation.duration = 0
+	Chart.defaults.global.legend.display = false;	
+		var config = {
+			type: 'line',
+			data: {
+				labels: ['','','','','','',''],
+				legend: {
+					display: false
+				},
+				datasets: [{
+					label: '',
+					data: [
+						2,
+						3,
+						2,
+						5,
+						2,
+						4,
+						3
+					],
+					fill: false,
+				}]
+			},
+			options: {
+				responsive: false,
+				title: {
+					display: true,
+					text: ''
+				},
+				tooltips: {
+					mode: 'index',
+					intersect: false,
+				},
+				hover: {
+					mode: 'nearest',
+					intersect: true
+				},
+				scales: {
+					xAxes: [{
+						display: false,
+						scaleLabel: {
+							display: false,
+							labelString: 'Month'
+						}
+					}],
+					yAxes: [{
+						display: false,
+						scaleLabel: {
+							display: false,
+							labelString: 'Value'
+						}
+					}]
+				}
+			}
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myLine = new Chart(ctx, config);
+		};
+
+		
+
+		
+		
+
+		
+	</script>
+
+	
+        
+            <script>
+arr=[];
+
+function handleOrientation(event) {
+	var x = event.beta;  // In degree in the range [-180,180]
+	var y = event.gamma; // In degree in the range [-90,90]
+	
+
+  // Because we don't want to have the device upside down
+  // We constrain the x value to the range [-90,90]
+}
+
+window.addEventListener('devicemotion', function(event) {
+  //console.log(event.acceleration.x + ' m/s2');
+  xx=event.acceleration.x;
+  if(arr.length%10==0){
+	config.data.datasets[0].data=arr;
+	var ctx = document.getElementById('canvas').getContext('2d');
+	window.myLine = new Chart(ctx, config);
+	
+	
+	arr=[xx];
+  }else{
+	arr.push(xx);
+  }
+});
+
+window.addEventListener('deviceorientation', handleOrientation);
+
+            </script>
+        
+    
+</body></html>
