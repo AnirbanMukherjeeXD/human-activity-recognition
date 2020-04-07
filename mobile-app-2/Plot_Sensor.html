@@ -2,14 +2,17 @@
 <!-- saved from url=(0014)about:internet -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
-        <script async="" src="./Line Chart_files/analytics.js.download"></script><script src="./Line Chart_files/Chart.min.js.download"></script>
-	<script src="./Line Chart_files/utils.js.download"></script>
-        
-        <style type="text/css">
-        
-
-        </style>
-        
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	
+	<style>
+	canvas{
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	</style>
+<style type="text/css">/* Chart.js */
+@keyframes chartjs-render-animation{from{opacity:.99}to{opacity:1}}.chartjs-render-monitor{animation:chartjs-render-animation 1ms}.chartjs-size-monitor,.chartjs-size-monitor-expand,.chartjs-size-monitor-shrink{position:absolute;direction:ltr;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1}.chartjs-size-monitor-expand>div{position:absolute;width:1000000px;height:1000000px;left:0;top:0}.chartjs-size-monitor-shrink>div{position:absolute;width:200%;height:200%;left:0;top:0}</style>
         <title>Plot Sensor Data</title>
     </head>
     <body><br><br><br><center><h2 style="font-family:verdana">Accelerometer</h2>
@@ -31,8 +34,6 @@
 				},
 				datasets: [{
 					label: '',
-					backgroundColor: window.chartColors.red,
-					borderColor: window.chartColors.red,
 					data: [
 						2,
 						3,
@@ -94,12 +95,7 @@
 	
         
             <script>
-                var ball   = document.querySelector('.ball');
-var garden = document.querySelector('.garden');
-var output = document.querySelector('.output');
-
-var maxX = garden.clientWidth  - ball.clientWidth;
-var maxY = garden.clientHeight - ball.clientHeight;
+arr=[];
 
 function handleOrientation(event) {
 	var x = event.beta;  // In degree in the range [-180,180]
