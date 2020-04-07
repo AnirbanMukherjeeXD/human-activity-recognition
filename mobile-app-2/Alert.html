@@ -3,7 +3,7 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         
         
-        
+        <style>body{transition:0.2s}</style>
         
         <title>Alert System</title>
     </head>
@@ -11,7 +11,7 @@
         
             
 
-<pre class="output">Acc</pre>
+<pre class="output"></pre>
 
         
         
@@ -19,7 +19,7 @@
                 
 
 var output = document.querySelector('.output');
-
+var i=0;
 
 
 /*function handleOrientation(event) {
@@ -48,7 +48,22 @@ var output = document.querySelector('.output');
 //window.addEventListener('deviceorientation', handleOrientation);
 window.addEventListener('devicemotion', function(event) {
   //console.log(event.acceleration.x + ' m/s2');
-  output.innerHTML="Acc: "+event.acceleration.x;
+  x=Math.abs(event.acceleration.x.toFixed(4));
+  y=Math.abs(event.acceleration.y.toFixed(4));
+  z=Math.abs(event.acceleration.z.toFixed(4));
+  max=x>y?x>z?x:z:y>z?y:z;
+  
+  if(max>2 && i==0 && max<col/12){
+	i=100;
+	col=255;
+  }else{
+	col=12*max;
+	}
+  
+  if(col>255)
+	col=255;
+  document.body.style.backgroundColor='rgb('+col+','+(255-col)+',0)';
+  i=Math.max(0,i-1);
 });
 
 
