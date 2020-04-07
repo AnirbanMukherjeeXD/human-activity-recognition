@@ -41,7 +41,7 @@ def load_gru(weights_file, debug=False):
 
   return model
 
-quantize_model(load_gru('gru.h5'), "gru_quantized")
+quantize_model(load_gru('/models/gru.h5'), "gru_quantized")
 
 def load_gru_pruned(weights_file, debug=False):
   epochs = 100
@@ -72,5 +72,5 @@ def load_gru_pruned(weights_file, debug=False):
     pruned_model.summary()
   return pruned_model
 
-# quantize_model(load_gru_pruned('gru_pruned.h5'), "gru_pruned_quantized") # TODO: Debug work pending
+# quantize_model(load_gru_pruned('/models/gru_pruned.h5'), "gru_pruned_quantized") # TODO: Debug work pending
 
