@@ -15,6 +15,8 @@ This work is based on the paper titled **"Edge-based Human Activity Recognition 
 
 ## Models Used
 
+<img src = "images/modelsDiagram.png" height = 50%>
+
 The following models are used for classifying human activity based on mobile sensor data:
 
 ### 1. **Convolutional Neural Networks (CNN)**
@@ -35,6 +37,11 @@ The dataset used for training and testing is **Human Activity Recognition (HAR)*
 [Human Activity Recognition Dataset on Kaggle](https://www.kaggle.com/erenaktas/human-activity-recognition)
 
 ---
+## Models
+
+The pruned models are available in the folder `models`.
+
+<img src = "images/results.png" width = 60%>
 
 ## Requirements
 
