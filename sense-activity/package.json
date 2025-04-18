@@ -1,0 +1,9 @@
+{
+  "name": "sense-activity",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node ./rtt.js"
+  },
+  "dependencies": {
+  }
+}
